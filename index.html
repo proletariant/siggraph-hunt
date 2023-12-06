@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Test Website</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/main.css" />
+    <!-- include A-Frame obviously -->
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <!-- include ar.js for A-Frame -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <!-- ar.js touch gestures -->
+    <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+
+    <script src="js/main.js" async defer></script>
+
+    <script>
+      AFRAME.registerComponent("for_a_marker", {
+        init: function () {
+          var text = document.querySelector("#hellotext");
+          text.addEventListener("click", function (evt) {
+            //or you could do "mouseenter" [event](https://aframe.io/docs/0.9.0/components/cursor.html#events)
+            text.setAttribute("color", "red");
+          });
+        },
+      });
+    </script>
+  </head>
+  <body style="margin: 0px; overflow: hidden">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+
+    <a-scene
+      embedded
+      arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+      gesture-detector
+      renderer="antialias: true; logarithmicDepthBuffer: true; colorManagement: true; sortObjects: true;"
+    >
+      <a-entity
+        cursor="rayOrigin: mouse"
+        raycaster="objects: .intersectable; useWorldCoordinates: true;"
+      ></a-entity>
+
+      <!--TEST
+      <a-marker preset="hiro">
+        <a-entity
+          rotation="-90 0 0"
+          position="0 0 0.5"
+          scale="30 30 30"
+          gltf-model="assets/Avocado.gltf"
+        ></a-entity>
+      </a-marker>
+
+      <a-marker preset="kanji" emitevents="true" for_a_marker>
+        <a-entity
+          id="bunchan"
+          rotation="-90 0 0"
+          position="0 0 0.5"
+          gltf-model="assets/bunchan.gltf"
+          gesture-handler
+        ></a-entity>
+        <a-box
+          id="hellotext"
+          class="intersectable"
+          rotation="-90 0 0"
+          position="-0.5 0 0.7"
+          color="yellow"
+        ></a-box>
+      </a-marker>-->
+
+      <!--ANIMATION FESTIVAL MARKER-->
+      <!--<a-marker
+        preset="pattern"
+        type="pattern"
+        url="assets/patterns/pattern-animationfestival.patt"
+      >-->
+      <a-marker type="barcode" value="0">
+        <a-entity
+          rotation="90 0 180"
+          gltf-model=""
+          gesture-handler
+        ></a-entity>
+      </a-marker>
+
+      <!--ART GALLERY MARKER-->
+      <!--<a-marker
+        preset="pattern"
+        type="pattern"
+        url="assets/patterns/pattern-artgallery.patt"
+      >-->
+      <a-marker type="barcode" value="1">
+        <a-entity
+          rotation="90 0 180"
+          gltf-model="f"
+          gesture-handler
+        ></a-entity>
+      </a-marker>
+
+      <!--ART PAPERS MARKER-->
+      <!--<a-marker
+        preset="pattern"
+        type="pattern"
+        url="assets/patterns/pattern-artpapers.patt"
+      >-->
+      <a-marker type="barcode" value="2">
+        <a-entity
+          rotation="90 0 180"
+          gltf-model=""
+          gesture-handler
+        ></a-entity>
+      </a-marker>
+
+      <!--BIRDS OF A FEATHER MARKER-->
+      <!--<a-marker
+        preset="pattern"
+        type="pattern"
+        url="assets/patterns/pattern-birdsofafeather.patt"
+      >-->
+      <a-marker type="barcode" value="3">
+        <a-entity
+          rotation="90 0 180"
+          scale="3 3 3"
+          gltf-model="assets/bird/bird_single.gltf"
+          gesture-handler
+        ></a-entity>
+        <a-entity
+          rotation="90 0 180"
+          scale="3 3 3"
+          gltf-model="assets/bird/bird_flock_2.gltf"
+        ></a-entity>
+      </a-marker>
+
+      <!--BUSINESS AND INNOVATION SYMPOSIUM MARKER-->
+      <!--<a-marker
+        preset="pattern"
+        type="pattern"
+        url="assets/patterns/pattern-business.patt"
+      >-->
+      <a-marker type="barcode" value="4">
+        <a-entity
+          rotation="90 0 180"
+          scale="4 4 4"
+          gltf-model="assets/briefcase/suitcase.gltf"
+          gesture-handler
+        ></a-entity>
+      </a-marker>
+
+      <!--COURSES MARKER-->
+      <!--<a-marker
+        preset="pattern"
+        type="pattern"
+        url="assets/patterns/pattern-courses.patt"
+      >-->
+      <a-marker type="barcode" value="5">
+        <a-entity
+          rotation="90 0 180"
+          gltf-model=""
+          gesture-handler
+        ></a-entity>
+      </a-marker>
+
+      <!--DEMOSCENE MARKER-->
+      <!--<a-marker
+        preset="pattern"
+        type="pattern"
+        url="assets/patterns/pattern-demoscene.patt"
+      >-->
+      <a-marker type="barcode" value="6">
+        <a-entity
+          id="crt"
+          rotation="90 0 180"
+          gltf-model="assets/crt.gltf"
+          gesture-handler
+        ></a-entity>
+        <!--<a-image src="assets/snael.jpg" rotation="-90 0 0"> </a-image>-->
+      </a-marker>
+
+      <!--DIVERSITY EQUITY AND INCLUSION MARKER-->
+      <!--<a-marker
+        preset="pattern"
+        type="pattern"
+        url="assets/patterns/pattern-diversityequityinclusion.patt"
+      >-->
+      <a-marker type="barcode" value="7">
+        <a-entity
+          rotation="90 0 180"
+          gltf-model=""
+          gesture-handler
+        ></a-entity>
+      </a-marker>
+
+      <!--DOCTORAL MARKER-->
+      <!--<a-marker
+        preset="pattern"
+        type="pattern"
+        url="assets/patterns/pattern-doctoral.patt"
+      >-->
+      <a-marker type="barcode" value="8">
+        <a-entity
+          rotation="90 0 180"
+          gltf-model=""
+          gesture-handler
+        ></a-entity>
+      </a-marker>
+
+      <!--EDUCATOR'S FORUM MARKER-->
+      <!--<a-marker
+        preset="pattern"
+        type="pattern"
+        url="assets/patterns/pattern-educators.patt"
+      >-->
+      <a-marker type="barcode" value="9">
+        <a-entity
+          rotation="90 0 180"
+          scale="10 10 10"
+          gltf-model="assets/mortarboard/mortarboard.gltf"
+          gesture-handler
+        ></a-entity>
+      </a-marker>
+
+      <!--EMERGING TECHNOLOGIES MARKER-->
+      <!--<a-marker
+        preset="pattern"
+        type="pattern"
+        url="assets/patterns/pattern-emergingtech.patt"
+      >-->
+      <a-marker type="barcode" value="10">
+        <a-entity
+          rotation="90 0 180"
+          scale="5 5 5"
+          gltf-model="assets/gtx/gtx.gltf"
+          gesture-handler
+        ></a-entity>
+      </a-marker>
+
+      <!--POSTERS MARKER-->
+      <!--<a-marker
+        preset="pattern"
+        type="pattern"
+        url="assets/patterns/pattern-posters.patt"
+      >-->
+      <a-marker type="barcode" value="11">
+        <a-image
+          rotation="-90 0 0"
+          height="1.4142"
+          src="assets/poster.png"
+          gesture-handler
+        ></a-image>
+      </a-marker>
+
+      <!--REAL-TIME LIVE MARKER-->
+      <!--<a-marker
+        preset="pattern"
+        type="pattern"
+        url="assets/patterns/pattern-realtimelive.patt"
+      >-->
+      <a-marker type="barcode" value="12">
+        <a-entity
+          rotation="90 0 180"
+          scale="0.1 0.1 0.1"
+          gltf-model="assets/microphone/microphone.gltf"
+          gesture-handler
+        ></a-entity>
+      </a-marker>
+
+      <!--TECHNICAL COMMUNICATIONS MARKER-->
+      <!--<a-marker
+        preset="pattern"
+        type="pattern"
+        url="assets/patterns/pattern-technicalcomms.patt"
+      >-->
+      <a-marker type="barcode" value="13">
+        <a-entity
+          rotation="90 0 180"
+          gltf-model=""
+          gesture-handler
+        ></a-entity>
+      </a-marker>
+
+      <!--TECHNICAL PAPERS MARKER-->
+      <!--<a-marker
+        preset="pattern"
+        type="pattern"
+        url="assets/patterns/pattern-techpapers.patt"
+      >-->
+      <a-marker type="barcode" value="14">
+        <a-entity
+          rotation="90 0 180"
+          gltf-model=""
+          gesture-handler
+        ></a-entity>
+      </a-marker>
+
+      <!--XR MARKER-->
+      <!--<a-marker
+        preset="pattern"
+        type="pattern"
+        url="assets/patterns/pattern-xr.patt"
+      >-->
+      <a-marker type="barcode" value="15">
+        <a-entity
+          rotation="90 0 180"
+          gltf-model=""
+          gesture-handler
+        ></a-entity>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
