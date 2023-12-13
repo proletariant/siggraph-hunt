@@ -12,7 +12,7 @@ AFRAME.registerComponent('markerhandler', {
 
 /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
 function openNav() {
-  document.getElementById("mySidenav").style.top = "60%";
+  document.getElementById("mySidenav").style.top = "0%";
   document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 }
 
